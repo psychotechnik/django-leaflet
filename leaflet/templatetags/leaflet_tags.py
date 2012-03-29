@@ -5,9 +5,9 @@ register = template.Library()
 
 @register.simple_tag
 def leaflet_css():
-    return """<link rel="stylesheet" type="text/css" href="%(static)sleaflet.css">
+    return """<link rel="stylesheet" type="text/css" href="%(static)scss/leaflet.css">
     <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="%(static)sleaflet.ie.css" />
+    <link rel="stylesheet" type="text/css" href="%(static)scss/leaflet.ie.css" />
     <![endif]-->
     """ % {'static': settings.STATIC_URL}
 
@@ -16,7 +16,7 @@ def leaflet_js():
     leafletjs = 'leaflet.min.js'
     if settings.TEMPLATE_DEBUG:
         leafletjs = 'leaflet.js'
-    return '<script src="%s%s" type="text/javascript"></script>' % (settings.STATIC_URL, leafletjs)
+    return '<script src="%sjs/%s" type="text/javascript"></script>' % (settings.STATIC_URL, leafletjs)
 
 @register.simple_tag
 def leaflet_map(name):
